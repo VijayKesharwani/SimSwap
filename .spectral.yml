@@ -81,13 +81,23 @@ rules:
     description: |
       This rule ensures consistent and descriptive naming for path parameters in your OpenAPI specification.
       Please use 'resource_id' instead of just 'id' for your path parameters.
-    given: "$..parameters[?(@.in == 'path' && @.name)]"
+    given: "$..parameters[?(@.in == 'path')]"
     then:
       field: name
       function: pattern
       functionOptions:
         notMatch: \b(id|Id|ID|iD)\b
     recommended: true  # Set to true/false to enable/disable this rule
+
+  allow-null-in-examples:
+    message: "Fields in examples can have null values."
+    severity: info
+    description: |
+      This rule allows any field within examples to have a null value without causing a linting error.
+    given: "$..examples[*].value[?(@ === null)]"  # Checks all values in examples for null
+    then:
+      function: truthy  # Allows null values without error
+    recommended: true
 
   camara-security-no-secrets-in-path-or-query-parameters:
     message: "Sensitive data found in path: {{error}} Consider avoiding the use of Sesentive data "
