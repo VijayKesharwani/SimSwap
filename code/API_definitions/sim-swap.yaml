@@ -123,6 +123,8 @@ paths:
               examples:
                 retrieve_date:
                   $ref: "#/components/examples/RETRIEVE_DATE"
+                retrieve_monitored_null:
+                  $ref: "#/components/examples/RETRIEVE_MONITORED_NULL"
         "400":
           $ref: "#/components/responses/Generic400"
         "401":
@@ -414,3 +416,7 @@ components:
       summary: Lastest SIM swap date is send back
       value:
         latestSimChange: 2024-09-18T07:37:53.471829447Z
+    RETRIEVE_MONITORED_NULL:
+      summary: Only null value is retrieved
+      value:
+        latestSimChange: null
