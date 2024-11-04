@@ -121,11 +121,11 @@ paths:
               schema:
                 $ref: "#/components/schemas/SimSwapInfo"
               examples:
-                RETRIEVE_DATE:
+                retrieve_date:
                   $ref: "#/components/examples/RETRIEVE_DATE"
-                RETRIEVE_MONITORED_PERIOD:
+                retrieve_monitored_period:
                   $ref: "#/components/examples/RETRIEVE_MONITORED_PERIOD"
-                RETRIEVE_MONITORED_NULL:
+                retrieve_monitored_null:
                   $ref: "#/components/examples/RETRIEVE_MONITORED_NULL"
         "400":
           $ref: "#/components/responses/Generic400"
