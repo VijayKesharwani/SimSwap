@@ -75,6 +75,16 @@ rules:
         match: 3.0.3
     recommended: true  # Set to true/false to enable/disable this rule
 
+  allow-null-in-examples:
+    message: "Fields in examples can have null values."
+    severity: info
+    description: |
+      This rule allows any field within examples to have a null value without causing a linting error.
+    given: "$..examples[*].value[?(@ === null)]"  # Checks all values in examples for null
+    then:
+      function: truthy  # Allows null values without error
+    recommended: true
+
   camara-path-param-id:
     message: "Path Parameter Naming Warning: Use 'resource_id' instead of just 'id' in path parameters."
     severity: warn
@@ -88,16 +98,6 @@ rules:
       functionOptions:
         notMatch: \b(id|Id|ID|iD)\b
     recommended: true  # Set to true/false to enable/disable this rule
-
-  allow-null-in-examples:
-    message: "Fields in examples can have null values."
-    severity: info
-    description: |
-      This rule allows any field within examples to have a null value without causing a linting error.
-    given: "$..examples[*].value[?(@ === null)]"  # Checks all values in examples for null
-    then:
-      function: truthy  # Allows null values without error
-    recommended: true
 
   camara-security-no-secrets-in-path-or-query-parameters:
     message: "Sensitive data found in path: {{error}} Consider avoiding the use of Sesentive data "
