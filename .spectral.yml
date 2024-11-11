@@ -84,6 +84,7 @@ rules:
     given: "$.paths[*][*].parameters[?(@.in == 'path')].name"
     then:
       field: name
+      function: pattern
       functionOptions:
         # Enforce that path parameters follow a pattern of '{resourceName}Id'
         match: "^[a-zA-Z]+Id$"
